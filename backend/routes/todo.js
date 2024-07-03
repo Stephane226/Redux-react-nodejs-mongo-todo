@@ -7,6 +7,7 @@ const Todo = require('../models/Todo');
 
 // -----------------------------Create a new TODO item-----------------------------
 router.post('/', async (req, res) => {
+  console.log(req.body)
  try {
    const { title, description, status } = req.body;
    const newTodo = new Todo({

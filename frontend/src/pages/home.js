@@ -80,7 +80,7 @@ const TodoList = () => {
                 borderRadius: "10px",
               }}
             >
-              <ListItemText primary={todo.title} secondary={todo.description} />
+              <ListItemText primary={todo.title} secondary={todo.description.length > 3 ? todo.description.substring(0,5) + '...' : todo.description} />
               <IconButton
                 edge="end"
                 aria-label="delete"

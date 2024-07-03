@@ -2,9 +2,14 @@ import {
   GET_LIST_START,
   GET_LIST_SUCCESS,
   GET_LIST_FAILED,
+
   ADD_TODO_START,
   ADD_TODO_SUCCESS,
   ADD_TODO_FAILED,
+
+  VIEW_TODO_FAILED,
+  VIEW_TODO_SUCCESS,
+  VIEW_TODO_START
 } from "./types";
 
 export const getListStart = () => {
@@ -111,3 +116,52 @@ export const addTodo = (data) => {
      });
  };
 };
+
+
+//VIEW TODO ITEM
+
+export const viewTodoStart = () => {
+ return {
+   type: VIEW_TODO_START,
+ };
+};
+
+export const viewTodoSuccess = (payload) => {
+ return {
+   type: VIEW_TODO_SUCCESS,
+   payload,
+ };
+};
+
+export const viewTodoFailed = (err) => {
+ return {
+   type: VIEW_TODO_FAILED,
+   err: err,
+ };
+};
+
+export const viewTodo = (id) => {
+ return (dispatch) => {
+   dispatch(viewTodoStart());
+   fetch(`http://localhost:3000/api/todos/${id}`, {
+     method: "GET",
+     headers: {
+       Accept: "application/json",
+       "Content-Type": "application/json",
+     },
+   })
+     .then((res) => res.json())
+     .then((data) => {
+       if (data) {
+         console.log(data);
+         dispatch(viewTodoSuccess(data));
+       } else {
+         console.log("an issue happenned...");
+       }
+     })
+     .catch((err) => {
+       dispatch(viewTodoFailed(err));
+     });
+ };
+};
+

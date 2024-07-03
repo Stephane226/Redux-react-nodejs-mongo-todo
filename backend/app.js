@@ -7,6 +7,17 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions))
+
+
 // Parser  JSON request bodies
 app.use(bodyParser.json()); 
 

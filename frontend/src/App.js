@@ -1,20 +1,29 @@
 import React from 'react';
-import { Container, Typography } from '@mui/material';
 import Home from './pages/home';
-import TodoForm from './components/TodoForm';
+import View from './pages/view';
+import Update from './pages/update';
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+
 
 function App() {
+
+  let route = (
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/view" component={View} />
+      <Route path="/update" component={Update} />
+      <Redirect to='/' />
+    </Switch>
+    )
+
+
   return (
-    <Container>
-      <Typography variant="h2" component="h1" gutterBottom>
-        Todo list 
-      </Typography>
+    <>
+  
+    {route}
+   </>
 
- 
-
-      <Home />
-    </Container>
   );
 }
 
-export default App;
+export default  withRouter(App);

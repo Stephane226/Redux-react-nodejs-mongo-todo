@@ -7,9 +7,7 @@ import TodoForm from '../components/TodoForm';
 
 //redux
 import { Link, Redirect } from "react-router-dom";
-import {getList} from '../stores/actions'
-
-
+import {getList,viewTodo} from '../stores/actions'
 
 
 const TodoList = () => {

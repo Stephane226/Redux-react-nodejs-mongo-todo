@@ -1,12 +1,28 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import {addTodo } from '../stores/actions'
 
 const TodoForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
+
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addTodo({ title, description, status: 'pending' }));
+    setTitle('');
+    setDescription('');
+  };
+
+
+
+
   return (
-    <Box component="form">
+    <Box component="form" onSubmit={handleSubmit} >
       <TextField
         label="Title"
         value={title}

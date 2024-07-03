@@ -33,6 +33,7 @@ const loading  = useSelector(state => state.TodoReducer.loading)
   useEffect(() => {
    //dispatch(creerListStatusCancel())
    console.log('dsd')
+   console.log(todolist)
 }, []);
 
 
@@ -40,19 +41,22 @@ console.log('dsd')
   return (
    <>
    <TodoForm/>
-   {
-    loading ? 'Loading...' :
-    <List style={{marginTop : '50px'}}>
-    {todolist && todolist.map((todo) => (
-      <ListItem key={todo._id} style={{backgroundColor:'whitesmoke' , marginBottom : '10px',borderRadius : '10px'}}>
-        <ListItemText primary={todo.title} secondary={todo.description} />
-        <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(todo._id)}>
-          <DeleteIcon />
-        </IconButton>
-      </ListItem>
-    ))}
-  </List>
-   }
+   
+    {
+     loading ? 'Loading...' :
+     <List style={{marginTop : '50px'}}>
+     {todolist.map((todo) => (
+       <ListItem key={todo._id} style={{backgroundColor:'whitesmoke' , marginBottom : '10px',borderRadius : '10px'}}>
+         <ListItemText primary={todo.title} secondary={todo.description} />
+         <IconButton edge="end" aria-label="delete" onClick={() => handleDelete(todo._id)}>
+           <DeleteIcon />
+         </IconButton>
+       </ListItem>
+     ))}
+   </List>
+    }
+  
+   
   
     </>
   );

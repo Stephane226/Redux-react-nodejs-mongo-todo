@@ -2,13 +2,14 @@ import * as actionTypes from './types'
 
 const initialState = {
     loading: false,
+    loadingAddTodo:false,
     todolist:  [ ],
     error: false,
    
 }
 
 
-console.log(initialState.stateupdated0bj)
+
 
 const ReducerTodo = (state = initialState, action) => {
     switch (action.type) {
@@ -37,6 +38,35 @@ const ReducerTodo = (state = initialState, action) => {
               loading: false,
              error: action.payload
          }
+
+
+         //CREATE A TODO
+
+         case actionTypes.ADD_TODO_START:
+          return {
+              ...state,
+              loadingAddTodo: true,
+              error: false
+          }
+    
+    
+           
+           case actionTypes.ADD_TODO_SUCCESS:
+            return {
+                ...state,
+                loadingAddTodo: false,
+                error: false
+            }
+      
+       
+            case actionTypes.ADD_TODO_FAILED:
+             return {
+                 ...state,
+                 loadingAddTodo: false,
+                 error: action.payload
+             }
+    
+
    
 
         default:

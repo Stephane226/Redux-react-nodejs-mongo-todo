@@ -15,17 +15,20 @@ import TodoForm from "../components/TodoForm";
 
 //redux
 import { Link, Redirect } from "react-router-dom";
-import { getList, viewTodo } from "../stores/actions";
+import { getList, viewTodo ,deleteTodo} from "../stores/actions";
 
 const TodoList = () => {
 
  const history = useHistory();
- 
+
   const dispatch = useDispatch();
   const todolist = useSelector((state) => state.TodoReducer.todolist);
   const loading = useSelector((state) => state.TodoReducer.loading);
 
-  const handleDelete = (id) => {};
+  const handleDelete = (id) => {
+   dispatch(deleteTodo(id));
+
+  };
 
 
   const handleView = (id) => {

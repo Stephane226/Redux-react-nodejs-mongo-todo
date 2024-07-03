@@ -13,7 +13,12 @@ import {
 
   UPDATE_TODO_SUCCESS,
   UPDATE_TODO_START,
-  UPDATE_TODO_FAILED
+  UPDATE_TODO_FAILED,
+
+  DELETE_TODO_SUCCESS,
+  DELETE_TODO_START,
+  DELETE_TODO_FAILED
+
 
 } from "./types";
 
@@ -231,4 +236,57 @@ export const updateTodo = (data) => {
      });
  };
 };
+
+//DELETE TODO
+
+
+
+
+
+export const deleteTodoStart = () => {
+ return {
+   type: DELETE_TODO_START,
+ };
+};
+
+export const deleteTodoSuccess = (payload) => {
+ return {
+   type: DELETE_TODO_SUCCESS,
+   payload,
+ };
+};
+
+export const deleteTodoFailed = (err) => {
+ return {
+   type: DELETE_TODO_FAILED,
+   err: err,
+ };
+};
+
+export const deleteTodo = (id) => {
+ return (dispatch) => {
+   dispatch(deleteTodoStart());
+   fetch(`http://localhost:3000/api/todos/${id}`, {
+     method: "DELETE",
+     headers: {
+       Accept: "application/json",
+       "Content-Type": "application/json",
+     },
+   })
+   .then((res) => {
+
+    if (res.status === 200) {
+         console.log('success 200 ');
+         dispatch(deleteTodoSuccess());
+         dispatch(getList())
+       } else {
+         console.log("an issue happenned...");
+       }
+     })
+     .catch((err) => {
+       dispatch(deleteTodoFailed(err));
+     });
+ };
+};
+
 

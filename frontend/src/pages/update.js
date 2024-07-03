@@ -15,6 +15,7 @@ const Update = () => {
   useEffect(() => {
     // dispatch(getList())
     //console.log('dsd')
+    console.log(viewTodo)
   }, []);
 
   console.log("dsd");
@@ -26,7 +27,7 @@ const Update = () => {
       {loading ? (
         "Loading..."
       ) : (
-        <UpdateTodoForm/>
+        <UpdateTodoForm viewTodo={viewTodo}/>
       )}
     </Container>
   );

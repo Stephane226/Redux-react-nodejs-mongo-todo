@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import {addTodo } from '../stores/actions'
+import {updateTodo } from '../stores/actions'
+import { useHistory } from 'react-router-dom';
 
-const UpdateTodoForm = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+const UpdateTodoForm = (props) => {
+ const history = useHistory();
+ 
+  const [title, setTitle] = useState(props.viewTodo.title);
+  const [description, setDescription] = useState(props.viewTodo.description);
 
 
 
@@ -13,9 +16,12 @@ const UpdateTodoForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo({ title, description, status: 'pending' }));
-    setTitle('');
-    setDescription('');
+    dispatch(updateTodo({id : props.viewTodo._id, title, description, status: 'pending' }));
+     //redirect to lists...
+
+      history.push("/home");
+ 
+    
   };
 
 

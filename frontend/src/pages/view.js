@@ -26,7 +26,7 @@ const View = () => {
         "Loading..."
       ) : (
         <List style={{ marginTop: "50px" }}>
-          <ListItemText primary="title here" secondary="description here" />
+          <ListItemText primary={viewTodo.title} secondary={viewTodo.description} />
         </List>
       )}
     </Container>

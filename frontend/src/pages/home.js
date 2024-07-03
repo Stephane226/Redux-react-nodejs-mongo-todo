@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { List, ListItem, ListItemText, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Container, Typography } from '@mui/material';
+
 
 import TodoForm from '../components/TodoForm';
 
@@ -37,7 +39,13 @@ const loading  = useSelector(state => state.TodoReducer.loading)
 
 console.log('dsd')
   return (
-   <>
+   <Container>
+   <Typography variant="h2" component="h1" gutterBottom>
+     Todo list 
+   </Typography>
+
+
+   
    <TodoForm/>
    
     {
@@ -56,7 +64,7 @@ console.log('dsd')
   
    
   
-    </>
+  </Container>
   );
 };
 

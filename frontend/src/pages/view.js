@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { List, ListItem, ListItemText, IconButton } from "@mui/material";
+import { Container, Typography } from '@mui/material';
 
 //redux
 import { Link, Redirect } from "react-router-dom";
@@ -17,7 +18,10 @@ const View = () => {
 
   console.log("dsd");
   return (
-    <>
+<Container>
+   <Typography variant="h2" component="h1" gutterBottom>
+    View Details.
+   </Typography>
       {loading ? (
         "Loading..."
       ) : (
@@ -25,7 +29,7 @@ const View = () => {
           <ListItemText primary="title here" secondary="description here" />
         </List>
       )}
-    </>
+    </Container>
   );
 };
 

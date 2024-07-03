@@ -80,6 +80,34 @@ const ReducerTodo = (state = initialState, action) => {
         error: action.payload,
       };
 
+
+      //UPDATE TPDO
+
+
+      case actionTypes.UPDATE_TODO_START:
+       return {
+         ...state,
+         loading: true,
+         error: false,
+       };
+ 
+     case actionTypes.UPDATE_TODO_SUCCESS:
+       return {
+         ...state,
+         loading: false,
+         error: false,
+       };
+ 
+     case actionTypes.UPDATE_TODO_FAILED
+     :
+       return {
+         ...state,
+         loading: false,
+         error: action.payload,
+       };
+
+       
+
     default:
       return state;
   }

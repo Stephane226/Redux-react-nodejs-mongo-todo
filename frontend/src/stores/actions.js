@@ -9,7 +9,12 @@ import {
 
   VIEW_TODO_FAILED,
   VIEW_TODO_SUCCESS,
-  VIEW_TODO_START
+  VIEW_TODO_START,
+
+  UPDATE_TODO_SUCCESS,
+  UPDATE_TODO_START,
+  UPDATE_TODO_FAILED
+
 } from "./types";
 
 export const getListStart = () => {
@@ -161,6 +166,68 @@ export const viewTodo = (id) => {
      })
      .catch((err) => {
        dispatch(viewTodoFailed(err));
+     });
+ };
+};
+
+
+
+
+//UPDATE TODO ITEMM
+
+export const updateTodoStart = () => {
+ return {
+   type: UPDATE_TODO_START,
+ };
+};
+
+export const updateTodoSuccess = (payload) => {
+
+ return {
+   type: UPDATE_TODO_SUCCESS,
+   payload,
+ };
+};
+
+export const updateTodoFailed = (err) => {
+ return {
+   type: UPDATE_TODO_FAILED,
+   err: err,
+ };
+};
+
+export const updateTodo = (data) => {
+ 
+ return (dispatch) => {
+   dispatch(updateTodoStart());
+   fetch(`http://localhost:3000/api/todos/${data.id}`, {
+     method: "PUT",
+     headers: {
+       Accept: "application/json",
+       "Content-Type": "application/json",
+     },
+
+
+     body: JSON.stringify({ 
+      title : data.title,
+      description: data.description,
+      status : data.status, 
+     }),
+
+
+   })
+   .then((res) => {
+
+    if (res.status === 200) {
+         console.log('success 200 ');
+         dispatch(updateTodoSuccess());
+         dispatch(getList())
+       } else {
+         console.log("an issue happenned...");
+       }
+     })
+     .catch((err) => {
+       dispatch(getListFailed(err));
      });
  };
 };

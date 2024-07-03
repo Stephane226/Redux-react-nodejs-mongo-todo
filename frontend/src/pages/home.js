@@ -5,7 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import EditIcon from "@mui/icons-material/Edit";
 import { Container, Typography } from "@mui/material";
-
+import Loader from "../components/loader"
 
 import { useHistory } from 'react-router-dom';
 
@@ -68,7 +68,8 @@ const TodoList = () => {
       <TodoForm />
 
       {loading ? (
-        "Loading..."
+      <Loader/>
+
       ) : (
         <List style={{ marginTop: "50px" }}>
           {todolist.map((todo) => (
@@ -80,7 +81,7 @@ const TodoList = () => {
                 borderRadius: "10px",
               }}
             >
-              <ListItemText primary={todo.title} secondary={todo.description} />
+              <ListItemText primary={todo.title} secondary={todo.description.length > 3 ? todo.description.substring(0,5) + '...' : todo.description} />
               <IconButton
                 edge="end"
                 aria-label="delete"

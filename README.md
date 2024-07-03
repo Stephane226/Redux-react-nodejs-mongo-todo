@@ -1,4 +1,4 @@
-============================================FRONTEND=====================================================
+============================FRONTEND==================================
 
 To start the project,
  -1 Open the project on vs Code or any code editor
@@ -32,7 +32,7 @@ In the project we have 3 main pages
    Components are made of small reusable pieces reused in many pages,
 
 
-============================================   BACKEND  =====================================================
+========================================   BACKEND  =====================================
 
 To start the project : 
 

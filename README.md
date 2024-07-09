@@ -1,3 +1,4 @@
+
 ============================FRONTEND==================================
 
 To start the project,
@@ -44,6 +45,7 @@ To start the project :
 ------  DATABASE -----
 
 tbe project is made with an online database (MONGO DB)
+You need to connnect to your database !
 
 ----MODELS--------
 /models/todo.js

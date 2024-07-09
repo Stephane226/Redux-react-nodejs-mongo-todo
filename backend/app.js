@@ -22,7 +22,7 @@ app.use(cors(corsOptions))
 app.use(bodyParser.json()); 
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://userMycros:pASSW910$$&&*8exersiceTest2024%40@cluster0.ntqy8yu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect('YOUR MONGO CONNECTION URL HERE', {
   useUnifiedTopology: true,
   useNewUrlParser: true, // Add this line to avoid deprecated warnings
 }).then(() => {
